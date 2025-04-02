@@ -1,46 +1,43 @@
-import { useEffect,useState} from 'react';
-import './App.css'
-//import DNA from './Components/Main/DNA'
-import IntroAnimation from "./Components/Loading/IntroAnimation"
+import { useEffect, useState } from 'react';
+import './App.css';
+import IntroAnimation from "./Components/Loading/IntroAnimation";
 import Layout from './Components/Main/Layout';
 import { AnimatePresence, motion } from 'framer-motion';
 
 function App() {
-  const [loadingFinished,setLoadingFinished] = useState(false);
+  const [loadingFinished, setLoadingFinished] = useState(false);
 
-  const handleAnimationComplete = () =>{
+  const handleAnimationComplete = () => {
     setLoadingFinished(true);
-  }
+  };
 
   return (
-    <>
-      <AnimatePresence mode='wait'>
-        {loadingFinished ? 
-          <PageWrapper key="intro">
-            <Layout/>
-          </PageWrapper>
-        :
-          <PageWrapper>
-            <IntroAnimation onComplete={handleAnimationComplete}/>
-          </PageWrapper>
-        }
-      </AnimatePresence>
-    </>
-  )
+    <AnimatePresence mode='wait'>
+      {loadingFinished ? (
+        <PageWrapper key="layout">
+          <Layout />
+        </PageWrapper>
+      ) : (
+        <PageWrapper key="intro">
+          <IntroAnimation onComplete={handleAnimationComplete} />
+        </PageWrapper>
+      )}
+    </AnimatePresence>
+  );
 }
 
-function PageWrapper({children}){
+function PageWrapper({ children }) {
   return (
     <motion.div
-      initial={{opacity:0}}
-      animate={{opacity:1}}
-      exit={{opacity:0, transition:{duration: 1.5}}}
-      transition={{duration:3}}
-      style={{width:'100%',height:'100%'}}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 1.5 } }}
+      transition={{ duration: 3 }}
+      style={{ width: '100%', height: '100%' }}
     >
       {children}
     </motion.div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -4,29 +4,42 @@ import * as THREE from "three";
 import { PLYLoader } from "three/examples/jsm/loaders/PLYLoader";
 
 function DNAGenerator() {
-  const { scene } = useThree();
-  const dnaRef = useRef(null); // ✅ Keep track of the loaded mesh
+  const { scene, camera } = useThree();
+  const dnaRef = useRef(null);
 
   useEffect(() => {
     const loader = new PLYLoader();
-    loader.load("/assets/DNA.ply", (geometry) => { // ✅ Use absolute path
-      geometry.computeVertexNormals();
 
+    loader.load("src/assets/DNA.ply", (geometry) => {
+      geometry.computeVertexNormals();
+      geometry.scale(-1, 1, 1); 
+      
+      console.log("✅ Loaded PLY Geometry", geometry);
+      console.log("Vertices:", geometry.attributes.position?.count || "❌ No vertices!");
+      console.log("Faces:", geometry.index ? geometry.index.count / 3 : "❌ No faces!");
+      
       const material = new THREE.MeshStandardMaterial({
-        color: 0x333333,
-        emissive: 0xffff00,
-        metalness: 0.8,
-        roughness: 0.4,
+        color: 0x00ff00,
+        wireframe: true,
       });
+      
+      
+      
 
       const mesh = new THREE.Mesh(geometry, material);
-      mesh.scale.set(5, 5, 5); // ✅ Scale up the model
-      mesh.position.set(0, 0, 0); // ✅ Center the model
+      mesh.rotateZ(70)
+      mesh.position.set(0, 0, 0);
+      mesh.scale.set(0.2,0.2,0.2); 
+
+
 
       scene.add(mesh);
-      dnaRef.current = mesh; // ✅ Store mesh reference
+      dnaRef.current = mesh;
 
-      console.log("DNA Model Loaded! ✅");
+      console.log("✅ DNA Model Loaded!");
+
+      camera.position.set(0, 5, 15);
+      camera.lookAt(0, 0, 0);
     });
 
     return () => {
@@ -34,20 +47,23 @@ function DNAGenerator() {
         scene.remove(dnaRef.current);
         dnaRef.current.geometry.dispose();
         dnaRef.current.material.dispose();
-        console.log("DNA Model Removed! 🗑️");
+        console.log("🗑️ DNA Model Removed!");
       }
     };
-  }, []);
+  }, [scene, camera]);
 
   return null;
 }
 
 export default function DNA() {
   return (
-    <div style={{ width: "100vw", height: "100vh", backgroundColor: "#000" }}>
-      <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-        <ambientLight intensity={1.5} />  {/* ✅ Brighter lighting */}
-        <directionalLight position={[5, 5, 5]} intensity={2} />
+    <div style={{ width: "100vw", height: "100vh", backgroundColor: "#222" }}>
+      <Canvas camera={{ position: [0, 5, 15], fov: 50 }}>
+        <ambientLight intensity={5} />
+        <pointLight position={[0, 10, 10]} intensity={10} />
+        <directionalLight position={[-10, 10, 10]} intensity={10} />
+
+        <gridHelper args={[100, 50]} />
 
         <DNAGenerator />
       </Canvas>
