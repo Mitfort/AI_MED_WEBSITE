@@ -4,7 +4,7 @@ import IntroAnimation from "./Components/Loading/IntroAnimation";
 import Layout from "./Components/Main/Layout";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter} from "react-router-dom";
 import About from "./Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
 import Projects from "./Components/Pages/Projects";
@@ -33,17 +33,12 @@ function App() {
   }, [loadingFinished]);
 
   return (
-    <Router>
       <AnimatePresence mode="wait">
         {loadingFinished? (
           <PageWrapper key="layout">
-            <Routes>
-              <Route path="/" element={<Layout />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/recrutation" element={<Recrutation />} />
-            </Routes>
+            <BrowserRouter>
+              <Layout/>
+            </BrowserRouter>  
           </PageWrapper>
         ) : (
           <PageWrapper key="intro">
@@ -51,7 +46,6 @@ function App() {
           </PageWrapper>
         )}
       </AnimatePresence>
-    </Router>
   );
 }
 
