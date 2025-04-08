@@ -18,7 +18,7 @@ export default function IntroAnimation({onComplete})
 
             <div className="typewriter">
                 <div>
-                    <p>Arteficial Inteligence In Medicine</p>
+                    <p>Artificial Inteligence In Medicine</p>
                 </div>
             </div>
         </div>
