@@ -52,14 +52,6 @@ export default function Layout() {
           </div>
         </main>
 
-        <section id="about">
-          <div className="badge">🔸 About us</div>
-          <h2>Crafting Tomorrow's <span>Innovative Solutions</span></h2>
-          <p>
-            We're consistently pushing the boundaries of innovation to create groundbreaking
-            solutions that effectively meet today's challenges.
-          </p>
-        </section>
         <About/>
       </motion.div>
     </div>

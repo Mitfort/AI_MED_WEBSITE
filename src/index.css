@@ -213,7 +213,19 @@ a{
   border-color: #fff;
 }
 
-/* DNA slow spin animation */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+section p{
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
 @keyframes slowRotate {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
