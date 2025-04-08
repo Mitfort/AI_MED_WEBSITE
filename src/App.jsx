@@ -5,10 +5,6 @@ import Layout from "./Components/Main/Layout";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter} from "react-router-dom";
-import About from "./Components/Pages/About";
-import Contact from "./Components/Pages/Contact";
-import Projects from "./Components/Pages/Projects";
-import Recrutation from "./Components/Pages/Recrutation";
 import { invalidate } from "@react-three/fiber";
 
 function App() {
