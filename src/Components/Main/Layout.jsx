@@ -4,6 +4,7 @@ import Projects from "../Pages/Projects";
 import Contact from "../Pages/Contact";
 import DNA from "./DNA"; 
 import About from "../Pages/About";
+import Recrutation from "../Pages/Recrutation";
 
 export default function Layout() {
   const location = useLocation();
@@ -36,7 +37,6 @@ export default function Layout() {
           </div>
 
           <div className="hero-content">
-            <div className="badge">🔓 Unlock the power of AI & ML</div>
             <h1>Osiągnij wiedzę kształtującą przyszłość</h1>
             <p>
               Wspólnie z nami naucz się wykorzystywać AI i uczenie maszynowe w różnych zastosowaniach medycznych i nie tylko
@@ -53,6 +53,9 @@ export default function Layout() {
         </main>
 
         <About/>
+        <Projects/>
+        <Contact/>
+        <Recrutation/>
       </motion.div>
     </div>
   );
