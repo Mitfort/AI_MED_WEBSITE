@@ -88,9 +88,9 @@ export default function Layout() {
               onClick={() => setNavBarOpen(false)}
             >
               <nav className="mobile-nav">
-                <a href="#about" onClick={() => {setNavBarOpen(false)}}>About</a>
-                <a href="#projects" onClick={() => setNavBarOpen(false)}>Projects</a>
-                <a href="#contact" onClick={() => setNavBarOpen(false)}>Contact</a>
+                <a href="#about" onClick={() => {setNavBarOpen(false)}}>O nas</a>
+                <a href="#projects" onClick={() => setNavBarOpen(false)}>Projekty</a>
+                <a href="#contact" onClick={() => setNavBarOpen(false)}>Kontakt</a>
                 <a href="#recrutation" onClick={() => {setNavBarOpen(false)}}>Rekrutacja</a>
               </nav>
             </motion.div>

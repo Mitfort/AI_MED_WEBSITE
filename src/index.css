@@ -317,7 +317,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20rem;
+  margin-top: 15rem;
   scroll-margin-top: 200px;
   min-height: 500px;
 }
@@ -327,6 +327,20 @@ section p{
   color: #ccc;
   margin-bottom: 2rem;
   text-align: center;
+}
+
+section h2{
+  text-align: center;
+}
+
+/* PROJECT */
+
+.project-grid{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+  width: 90%;
+  margin-top: 2rem;
 }
 
 @keyframes slowRotate {

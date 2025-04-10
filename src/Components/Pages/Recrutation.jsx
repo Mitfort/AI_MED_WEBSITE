@@ -4,7 +4,7 @@ const Recrutation = () => {
   return (
     <section id='recrutation'>
       <div className="badge">🔸 Rekrutacja </div>
-      <h2>Lorem Ipsum <span></span></h2>
+      <h2>Dołącz do świetnego zespołu 🔥 <span></span></h2>
       <p style={{width:'50%'}}>
         Rekrutacja jest tymczasowo zamknięta.. ale mamy nadzieje że jeszcze się zobaczymy. ⏳
       </p>
