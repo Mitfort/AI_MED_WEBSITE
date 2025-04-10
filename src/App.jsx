@@ -1,4 +1,3 @@
-// App.jsx
 import { useState, useEffect } from "react";
 import IntroAnimation from "./Components/Loading/IntroAnimation";
 import Layout from "./Components/Main/Layout";
@@ -38,7 +37,7 @@ function App() {
           </PageWrapper>
         ) : (
           <PageWrapper key="intro">
-          <IntroAnimation onComplete={() => setLoadingFinished(true)} />
+          <IntroAnimation onComplete={() => setLoadingFinished(true)}/>
           </PageWrapper>
         )}
       </AnimatePresence>

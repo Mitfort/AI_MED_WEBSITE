@@ -13,7 +13,7 @@ export default function IntroAnimation({onComplete})
 
 
     return (
-        <div className="loader">
+        <div className="loader" onClick={() => onComplete()}>
             <div className="loading-logo"/>
 
             <div className="typewriter">

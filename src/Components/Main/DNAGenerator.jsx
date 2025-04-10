@@ -13,6 +13,20 @@ function DNAGenerator({ listSize = 4, onSelect = () => {} }) {
   const isSplitting = useRef(false);
 
   useEffect(() => {
+    const handleDoubleClick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+  
+    const domElement = gl.domElement;
+    domElement.addEventListener("dblclick", handleDoubleClick);
+  
+    return () => {
+      domElement.removeEventListener("dblclick", handleDoubleClick);
+    };
+  }, [gl]);
+
+  useEffect(() => {
     const loader = new PLYLoader();
     loader.load(
       "src/assets/DNA.ply", 
