@@ -1,4 +1,3 @@
-// DNA.jsx
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import DNAGenerator from "./DNAGenerator";

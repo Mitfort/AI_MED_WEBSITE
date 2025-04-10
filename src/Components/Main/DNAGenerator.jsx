@@ -12,16 +12,14 @@ function DNAGenerator({ listSize = 4, onSelect = () => {} }) {
   const splitProgress = useRef(0);
   const isSplitting = useRef(false);
 
-  // Load and prepare DNA model
   useEffect(() => {
     const loader = new PLYLoader();
     loader.load(
-      "src/assets/DNA.ply", // Make sure this is accessible from public folder or served path
+      "src/assets/DNA.ply", 
       (geometry) => {
         geometry.computeVertexNormals();
         geometry.scale(-1, 1, 1);
 
-        // Apply rotation before splitting
         const tempMatrix = new THREE.Matrix4();
         tempMatrix.makeRotationZ(degToRad(90)).multiply(
           new THREE.Matrix4().makeRotationX(degToRad(150))
@@ -52,7 +50,6 @@ function DNAGenerator({ listSize = 4, onSelect = () => {} }) {
 
         geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
-        // Split into left and right
         const positions = geometry.attributes.position.array;
         const colorsArr = geometry.attributes.color.array;
         const leftPos = [], rightPos = [], leftCol = [], rightCol = [];
@@ -105,7 +102,6 @@ function DNAGenerator({ listSize = 4, onSelect = () => {} }) {
     );
   }, [listSize, camera]);
 
-  // Split animation
   useFrame(() => {
     if (!isSplitting.current) return;
     if (splitProgress.current >= 5) return;
@@ -116,7 +112,6 @@ function DNAGenerator({ listSize = 4, onSelect = () => {} }) {
     splitProgress.current += delta;
   });
 
-  // Click triggers split
   const onClick = () => {
     if (isSplitting.current) return;
     console.log("DNA clicked");

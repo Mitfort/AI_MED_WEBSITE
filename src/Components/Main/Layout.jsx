@@ -1,5 +1,6 @@
 import { useLocation, Routes, Route, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import Projects from "../Pages/Projects";
 import Contact from "../Pages/Contact";
 import DNA from "./DNA"; 
@@ -8,6 +9,7 @@ import Recrutation from "../Pages/Recrutation";
 
 export default function Layout() {
   const location = useLocation();
+  const [isNavBarOpen, setNavBarOpen] = useState(false)
 
   return (
     <div className="background">
@@ -23,13 +25,43 @@ export default function Layout() {
             <div className="logo-text">AIMED</div>
           </div>
           <nav className="navbar">
-            <a href="#about" className="nav-link">About</a>
-            <a href="#projects" className="nav-link">Projects</a>
-            <a href="#contact" className="nav-link">Contact</a>
+            <a href="#about" className="nav-link">O Nas</a>
+            <a href="#projects" className="nav-link">Projekty</a>
+            <a href="#contact" className="nav-link">Kontakt</a>
           </nav>
 
-          <button className="contact-button">Contact</button>
+          <button className="contact-button">Kontakt</button>
+
+          <button 
+            className="hamburger-btn" 
+            onClick={() => setNavBarOpen(!isNavBarOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            <div className="bar" />
+            <div className="bar" />
+            <div className="bar" />
+          </button>
+
         </header>
+
+        <AnimatePresence>
+          {isNavBarOpen && (
+            <motion.div
+              className="mobile-nav-overlay"
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-100%" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              onClick={() => setNavBarOpen(false)}
+            >
+              <nav className="mobile-nav">
+                <a href="#about" onClick={() => {setNavBarOpen(false)}}>About</a>
+                <a href="#projects" onClick={() => setNavBarOpen(false)}>Projects</a>
+                <a href="#contact" onClick={() => setNavBarOpen(false)}>Contact</a>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <main className="hero-section">
           <div className="dna-background">
@@ -45,10 +77,10 @@ export default function Layout() {
           </div>
 
           <div className="logos">
-            <div className="logo-item">Logoipsum</div>
-            <div className="logo-item">Logoipsum</div>
-            <div className="logo-item">Logoipsum</div>
-            <div className="logo-item">Logoipsum</div>
+            <div className="logo-item">Python</div>
+            <div className="logo-item">AI/ML</div>
+            <div className="logo-item">Medicine</div>
+            <div className="logo-item">Slicer</div>
           </div>
         </main>
 
