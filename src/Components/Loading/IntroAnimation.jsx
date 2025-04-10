@@ -1,8 +1,14 @@
 import { useEffect } from "react"
 import "./Loading.css"
 
-export default function IntroAnimation({onComplete})
+export default function IntroAnimation({onComplete,onClick})
 {
+
+    const handleClick = () =>{
+        onComplete();
+        onClick();
+    }
+
    useEffect(() => {
     const timer = setTimeout(() => {
         onComplete();
@@ -13,7 +19,7 @@ export default function IntroAnimation({onComplete})
 
 
     return (
-        <div className="loader" onClick={() => onComplete()}>
+        <div className="loader" onClick={() => handleClick()}>
             <div className="loading-logo"/>
 
             <div className="typewriter">

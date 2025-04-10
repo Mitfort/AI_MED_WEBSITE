@@ -8,6 +8,7 @@ import { invalidate } from "@react-three/fiber";
 
 function App() {
   const [loadingFinished, setLoadingFinished] = useState(false);
+  const [skipAnimation, setSkipAnimation] = useState(false);
 
   useEffect(() => {
     if (loadingFinished) {
@@ -36,21 +37,21 @@ function App() {
             </BrowserRouter>  
           </PageWrapper>
         ) : (
-          <PageWrapper key="intro">
-          <IntroAnimation onComplete={() => setLoadingFinished(true)}/>
+          <PageWrapper key="intro" skipAnimation={skipAnimation}>
+          <IntroAnimation onComplete={() => setLoadingFinished(true)} onClick={() => setSkipAnimation(true)}/>
           </PageWrapper>
         )}
       </AnimatePresence>
   );
 }
 
-function PageWrapper({ children }) {
+function PageWrapper({ children,skipAnimation }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 1.5 } }}
-      transition={{ duration: 3 }}
+      exit={{ opacity: 0, transition: { duration: skipAnimation ? 0.5 : 1.5 } }}
+      transition={{ duration: skipAnimation ? 0.5 : 3 }}
       style={{ width: "100%", height: "100%" , pointerEvents: 'auto'}}
     >
       {children}

@@ -1,0 +1,38 @@
+.footer {
+    min-height: 100px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 2px solid #ffa500;
+    box-shadow: 0 0 10px #ffa500;
+    position: relative;
+    justify-content: center;
+}
+
+.socials {
+    display: flex;
+    width: 30%;
+    position: absolute;
+    left: 0;
+}
+
+footer p {
+    color: #ccc;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;;
+}
+
+.info > *{
+    margin: 0;
+    padding: 0;
+}
+
+footer img {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.5rem 0 0.5rem;
+}

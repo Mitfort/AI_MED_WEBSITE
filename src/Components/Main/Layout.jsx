@@ -1,4 +1,3 @@
-import { useLocation, Routes, Route, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Projects from "../Pages/Projects";
@@ -6,6 +5,7 @@ import Contact from "../Pages/Contact";
 import DNA from "./DNA"; 
 import About from "../Pages/About";
 import Recrutation from "../Pages/Recrutation";
+import Footer from "../Footer/Footer";
 
 export default function Layout() {
   const [isNavBarOpen, setNavBarOpen] = useState(false)
@@ -50,7 +50,7 @@ export default function Layout() {
         transition={{ duration: 1.2, ease: "easeInOut" }}
       >
         <header className="hero-header">
-          <div className="logo">
+          <div className="logo" onClick={() => window.scrollTo({top:0,behavior:'smooth'})} >
             <div className="logo-image"></div>
             <div className="logo-text">AIMED</div>
           </div>
@@ -61,7 +61,9 @@ export default function Layout() {
             <a href="#recrutation" className={`nav-link ${activeSection=== 'recrutation' ? 'active-nav' : ''}`}>Rekrutacja</a>
           </nav>
 
-          <button className="contact-button">Kontakt</button>
+          <a href="https://skn.agh.edu.pl/pl/kolo/kn-ai-med/" target="_blank">
+            <button className="contact-button">Kontakt</button>
+          </a>
 
           <button 
             className="hamburger-btn" 
@@ -105,7 +107,10 @@ export default function Layout() {
             <p>
               Wspólnie z nami naucz się wykorzystywać AI i uczenie maszynowe w różnych zastosowaniach medycznych i nie tylko
             </p>
-            <button className="cta-button">Kontakt ↗</button>
+            
+            <a href="https://skn.agh.edu.pl/pl/kolo/kn-ai-med/" target="_blank">
+              <button className="cta-button">Kontakt ↗</button>
+            </a>
           </div>
 
           <div className="logos-carousel">
@@ -121,6 +126,8 @@ export default function Layout() {
         <Projects/>
         <Contact/>
         <Recrutation/>
+
+        <Footer/>
       </motion.div>
     </div>
   );
